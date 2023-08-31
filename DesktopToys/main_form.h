@@ -31,10 +31,11 @@ class TMainForm : public TForm
     void __fastcall _RightPanelResize(TObject *Sender);
   private: // User declarations
     bool FDrawing = false;
-    TPoint FCursorPos;
+    TPoint _CoursorPos;
     TScreenCanvas* _ScreenCanvas = nullptr;
     Graphics::TBitmap* FCursorBits = nullptr;
     Graphics::TBitmap* FDesktopBits = nullptr;
+    private:
     void __fastcall GrabScreenImage();
     void __fastcall WMSetFocus(TWMSetFocus &Message);
     void __fastcall WMKillFocus(TWMKillFocus &Message);

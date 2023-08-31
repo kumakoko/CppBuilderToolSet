@@ -4,11 +4,11 @@
 #pragma hdrstop
 
 #include "main_form.h"
+#include "cimg.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TMainForm* MainForm;
-
 
 const int DOT_SIZE = 20;
 
@@ -23,9 +23,9 @@ void __fastcall TMainForm::_ImageMouseMove(
 
     GetCursorPos(&Pt);
 
-    if (Pt.x != FCursorPos.x || Pt.y != FCursorPos.y) {
+    if (Pt.x != _CoursorPos.x || Pt.y != _CoursorPos.y) {
         R = Rect(0, 0, FCursorBits->Width, FCursorBits->Height);
-        OffsetRect(&R, FCursorPos.x, FCursorPos.y);
+        OffsetRect(&R, _CoursorPos.x, _CoursorPos.y);
         _Image->Canvas->CopyRect(R, FDesktopBits->Canvas, R);
 
         if (FDrawing) {
@@ -37,12 +37,13 @@ void __fastcall TMainForm::_ImageMouseMove(
 
         _Image->Canvas->Draw(Pt.x, Pt.y, FCursorBits);
 
-        FCursorPos = Pt;
+        _CoursorPos = Pt;
     }
 }
 
 void __fastcall TMainForm::FormActivate(TObject* Sender)
 {
+    cimg_library::CImg<unsigned char> image("lena.jpg");
     GrabScreenImage();
 }
 
@@ -115,10 +116,10 @@ void __fastcall TMainForm::_ColorGridChange(TObject* Sender)
     FDesktopBits->Canvas->Pen->Color = _ColorGrid->ForegroundColor;
 }
 
-void __fastcall TMainForm::_RightPanelResize(TObject *Sender)
+void __fastcall TMainForm::_RightPanelResize(TObject* Sender)
 {
-  _ColorGrid->Width = _RightPanel->ClientWidth;
-  _ColorGrid->Height = _RightPanel->ClientHeight;
+    _ColorGrid->Width = _RightPanel->ClientWidth;
+    _ColorGrid->Height = _RightPanel->ClientHeight;
 }
 //---------------------------------------------------------------------------
 

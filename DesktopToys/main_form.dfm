@@ -38,9 +38,6 @@ object MainForm: TMainForm
     Align = alRight
     TabOrder = 0
     OnResize = _RightPanelResize
-    ExplicitLeft = 544
-    ExplicitTop = 8
-    ExplicitHeight = 426
     object _ColorGrid: TColorGrid
       Left = 13
       Top = -6
