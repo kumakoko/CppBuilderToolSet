@@ -18,6 +18,7 @@ class TMainForm : public TForm
     void __fastcall FormDestroy(TObject* Sender);
     void __fastcall FormPaint(TObject* Sender);
     void __fastcall FormResize(TObject* Sender);
+	void __fastcall FormCreate(TObject *Sender);
   private: // User declarations
     bool __fastcall InitializeGL();
     void __fastcall OnResizeGL();
@@ -25,6 +26,7 @@ class TMainForm : public TForm
     void __fastcall ShutdownGL();
     void __fastcall InitScreenRectangleElement();
     void __fastcall RenderBeatHeart();
+    void __fastcall OnIdle(TObject* sender,bool& done);
   private:
     bool _IsGLInitialized = false;
     int xs, ys;

@@ -8,6 +8,7 @@
 #include "glad_wgl.h"
 #include "glm/glm.hpp"
 #include "kgl_defines.h"
+#include "boost/format.hpp"
 #include <windows.h>
 #include <ctime>
 
@@ -71,12 +72,9 @@ __fastcall bool TMainForm::InitializeGL()
     gladLoadGL();
 
     OnResizeGL();
-    glEnable(GL_DEPTH_TEST); // Zbuf
-    glDisable(GL_CULL_FACE); // vynechavaj odvratene steny
-    glDisable(GL_TEXTURE_2D); // pouzivaj textury, farbu pouzivaj z textury
-    glDisable(GL_BLEND); // priehladnost
-    glShadeModel(GL_SMOOTH); // gourard shading
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // background color
+
+    InitScreenRectangleElement();
+
     _IsGLInitialized = true;
     return true;
 }
@@ -87,8 +85,13 @@ __fastcall void TMainForm::OnResizeGL()
     xs = ClientWidth;
     ys = ClientHeight;
 
-    screen_resolution_ =
-        glm::vec2(static_cast<float>(xs), static_cast<float>(ys));
+    screen_resolution_.x = static_cast<float>(xs);
+    screen_resolution_.y = static_cast<float>(ys);
+
+    boost::format fmt("x = %d y = %d");
+    fmt % xs % ys;
+
+    OutputDebugStringA(fmt.str().c_str());
 
     if (xs <= 0)
         xs = 1; // Prevent a divide by zero
@@ -96,6 +99,8 @@ __fastcall void TMainForm::OnResizeGL()
         ys = 1;
     if (!_IsGLInitialized)
         return;
+
+    glViewport(0, 0, xs, ys);
 
     DrawGL();
 }
@@ -105,6 +110,7 @@ __fastcall void TMainForm::DrawGL()
     glClearColor(0.35f, 0.53f, 0.7f, 1.0f);
     glClearDepth(1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    RenderBeatHeart();
     SwapBuffers(hdc);
 }
 
@@ -217,6 +223,10 @@ void __fastcall TMainForm::InitScreenRectangleElement()
     rectangle_primitive_->CreateIndexed(GL_TRIANGLES, vertices,
         sizeof(vertices), GL_STATIC_DRAW, kgl::Primitive::UINT32, indices,
         sizeof(indices), GL_STATIC_DRAW, vtx_attri_array);
+
+    heart_beat_shader_ = new kgl::GPUProgram;
+    heart_beat_shader_->CreateFromFile(
+        "pixel_magic_vs.glsl", "heart_beat_fs.glsl", nullptr);
 }
 
 void __fastcall TMainForm::RenderBeatHeart()
@@ -228,3 +238,17 @@ void __fastcall TMainForm::RenderBeatHeart()
         glm::value_ptr(screen_resolution_), "screen_resolution");
     rectangle_primitive_->DrawIndexed();
 }
+
+void __fastcall TMainForm::OnIdle(TObject* sender, bool &done)
+{
+    if (_IsGLInitialized) {
+        DrawGL();
+    }
+}
+
+void __fastcall TMainForm::FormCreate(TObject* Sender)
+{
+    Application->OnIdle = this->OnIdle;
+}
+//---------------------------------------------------------------------------
+
