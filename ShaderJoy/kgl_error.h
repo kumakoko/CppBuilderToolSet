@@ -39,12 +39,12 @@ namespace kgl
 {
     class Error : public std::exception
     {
-    public:
+      public:
         /// <summary>
         /// Initializes a new instance of the <see cref="Error"/> class.
         /// </summary>
         /// <param name="message">The message.</param>
-        Error(const std::wstring& message);
+        Error(const std::wstring &message);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Error"/> class.
@@ -52,7 +52,7 @@ namespace kgl
         /// <param name="message">错误消息字符串</param>
         /// <param name="file">一般传__FILE__值进去</param>
         /// <param name="line">一般传__LINE__值进去</param>
-        Error(const std::wstring& message, const char* file, uint32_t line);
+        Error(const std::wstring &message, const char* file, uint32_t line);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Error"/> class.
@@ -61,7 +61,9 @@ namespace kgl
         /// <param name="error_desc_array">The error_desc_array.</param>
         /// <param name="file">The file.</param>
         /// <param name="line">The line.</param>
-        Error(const std::vector<GLenum>& error_code_array, const std::vector<std::string>& error_desc_array, const char* file, uint32_t line);
+        Error(const std::vector<GLenum> &error_code_array,
+            const std::vector<std::string> &error_desc_array, const char* file,
+            uint32_t line);
 
         /// <summary>
         /// Notifies this instance.
@@ -79,9 +81,9 @@ namespace kgl
         /// <param name="error_desc_array">返回OpenGL错误的描述的字符串的数组</param>
         /// <param name="error_code_array">返回OpenGL错误代码的数组</param>
         /// <returns>有错误的话返回true，没返回false</returns>
-        static bool GetGLErrorDesc(std::vector<std::string>& error_desc_array, std::vector<GLenum>& error_code_array);
-
-    protected:
+        static bool GetGLErrorDesc(std::vector<std::string> &error_desc_array,
+            std::vector<GLenum> &error_code_array);
+      protected:
         /// <summary>
         /// 组装错误消息,返回错误消息字符串
         /// </summary>
@@ -90,9 +92,9 @@ namespace kgl
 
         enum EXCEPTION_TYPE
         {
-            EXCEPTION_MESSAGE,  ///< 返回错误消息
-            EXCEPTION_REGULAR,  ///< 返回错误消息,出错的代码文件和行
-            EXCEPTION_OPENGL    ///< 返回错误消息,出错的代码文件和行以及渲染器给的错误代码
+            EXCEPTION_MESSAGE, ///< 返回错误消息
+            EXCEPTION_REGULAR, ///< 返回错误消息,出错的代码文件和行
+            EXCEPTION_OPENGL ///< 返回错误消息,出错的代码文件和行以及渲染器给的错误代码
         };
 
         /// <summary>
@@ -123,6 +125,4 @@ namespace kgl
 } // namespace kgl
 
 #endif // kgl_error_h__
-
-
 

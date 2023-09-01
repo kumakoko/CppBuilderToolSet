@@ -7,33 +7,40 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
+#include "kgl_primitive.h"
+#include "kgl_gpu_program.h"
+#include "glm/glm.hpp"
+
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
-__published:	// IDE-managed Components
-        void __fastcall FormDestroy(TObject *Sender);
-        void __fastcall FormPaint(TObject *Sender);
-        void __fastcall FormResize(TObject *Sender);
-private: // User declarations
-  __fastcall bool InitializeGL();
-  __fastcall void OnResizeGL();
-  __fastcall void DrawGL();
-  __fastcall void ShutdownGL();
-private:
-  bool _IsGLInitialized = false;
-  int xs, ys;
-  HDC hdc; // device context
-  HGLRC hrc; // rendering context
-public: // User declarations
-  __fastcall TMainForm(TComponent* Owner);
+  __published: // IDE-managed Components
+    void __fastcall FormDestroy(TObject* Sender);
+    void __fastcall FormPaint(TObject* Sender);
+    void __fastcall FormResize(TObject* Sender);
+  private: // User declarations
+    bool __fastcall InitializeGL();
+    void __fastcall OnResizeGL();
+    void __fastcall DrawGL();
+    void __fastcall ShutdownGL();
+    void __fastcall InitScreenRectangleElement();
+    void __fastcall RenderBeatHeart();
+  private:
+    bool _IsGLInitialized = false;
+    int xs, ys;
+    HDC hdc; // device context
+    HGLRC hrc; // rendering context
+    kgl::Primitive* rectangle_primitive_ = nullptr;
+    kgl::GPUProgram* heart_beat_shader_ = nullptr;
+        glm::vec2               screen_resolution_;
+    glm::vec2               mouse_input_pos_;
+  public: // User declarations
+    __fastcall TMainForm(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TMainForm *MainForm;
+extern PACKAGE TMainForm* MainForm;
 //---------------------------------------------------------------------------
 #endif
-
-
-
 
 
 

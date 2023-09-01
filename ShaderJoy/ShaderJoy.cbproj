@@ -65,9 +65,12 @@
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
         <SanitizedProjectName>ShaderJoy</SanitizedProjectName>
-        <IncludePath>./glm;$(IncludePath)</IncludePath>
+        <IncludePath>./glm;../libraries/iconv/include;../libraries/freeimage;$(IncludePath)</IncludePath>
         <VerInfo_Locale>2052</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <BCC_SmartPCHCache>false</BCC_SmartPCHCache>
+        <BCC_PCHWithExternalTypeFiles>false</BCC_PCHWithExternalTypeFiles>
+        <BCC_PCHUsage>None</BCC_PCHUsage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindcompvclsmp;bindcompvclwinx;bindengine;CloudService;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;FireDAC;FireDACADSDriver;FireDACCommon;FireDACCommonDriver;FireDACCommonODBC;FireDACIBDriver;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;FireDACSqliteDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;tethering;vcl;vclactnband;vcldb;vcldsnap;vcledge;vclFireDAC;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;VirtualTreesCR;xmlrtl;$(PackageImports)</PackageImports>
@@ -79,6 +82,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_PCHName_Clang>ShaderJoyPCH1.h</BCC_PCHName_Clang>
+        <ILINK_LibraryPath>D:\MyProjects\CppBuilderToolSet\libraries\freeimage\;D:\MyProjects\CppBuilderToolSet\libraries\iconv\prebuilt\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindcompvclsmp;bindcompvclwinx;bindengine;CloudService;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;FireDAC;FireDACADSDriver;FireDACCommon;FireDACCommonDriver;FireDACCommonODBC;FireDACIBDriver;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;FireDACSqliteDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;tethering;vcl;vclactnband;vcldb;vcldsnap;vcledge;vclFireDAC;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;VirtualTreesCR;xmlrtl;$(PackageImports)</PackageImports>
@@ -125,82 +129,128 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <ItemGroup>
+        <LibFiles Include="..\libraries\freeimage\FreeImage_bcb.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>36</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="..\libraries\iconv\prebuilt\iconv_bcb.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>35</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
         <CppCompile Include="glad.c">
-            <BuildOrder>3</BuildOrder>
+            <BuildOrder>26</BuildOrder>
         </CppCompile>
         <None Include="glad.h">
-            <BuildOrder>4</BuildOrder>
+            <BuildOrder>27</BuildOrder>
         </None>
         <CppCompile Include="glad_wgl.c">
-            <BuildOrder>5</BuildOrder>
+            <BuildOrder>27</BuildOrder>
         </CppCompile>
         <None Include="glad_wgl.h">
-            <BuildOrder>6</BuildOrder>
+            <BuildOrder>27</BuildOrder>
         </None>
         <CppCompile Include="kgl_camera.cc">
-            <BuildOrder>8</BuildOrder>
+            <BuildOrder>27</BuildOrder>
         </CppCompile>
         <None Include="kgl_camera.h">
-            <BuildOrder>9</BuildOrder>
+            <BuildOrder>27</BuildOrder>
         </None>
         <None Include="kgl_defines.h">
-            <BuildOrder>23</BuildOrder>
+            <BuildOrder>27</BuildOrder>
         </None>
         <CppCompile Include="kgl_error.cc">
-            <BuildOrder>10</BuildOrder>
+            <BuildOrder>28</BuildOrder>
         </CppCompile>
         <None Include="kgl_error.h">
-            <BuildOrder>11</BuildOrder>
+            <BuildOrder>25</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_gpu_program.cc">
+            <BuildOrder>29</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_gpu_program.h">
+            <BuildOrder>26</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_image_file_reader.cc">
+            <BuildOrder>30</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_image_file_reader.h">
+            <BuildOrder>27</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_light.cc">
+            <BuildOrder>31</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_light.h">
+            <BuildOrder>28</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_material.cc">
+            <BuildOrder>30</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_material.h">
+            <BuildOrder>29</BuildOrder>
         </None>
         <CppCompile Include="kgl_message_box.cc">
-            <BuildOrder>21</BuildOrder>
+            <BuildOrder>31</BuildOrder>
         </CppCompile>
         <None Include="kgl_message_box.h">
-            <BuildOrder>22</BuildOrder>
+            <BuildOrder>29</BuildOrder>
         </None>
         <CppCompile Include="kgl_primitive.cc">
-            <BuildOrder>12</BuildOrder>
+            <BuildOrder>32</BuildOrder>
         </CppCompile>
         <None Include="kgl_primitive.h">
-            <BuildOrder>13</BuildOrder>
+            <BuildOrder>29</BuildOrder>
         </None>
+        <CppCompile Include="kgl_source_texture.cc">
+            <BuildOrder>38</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_source_texture.h">
+            <BuildOrder>37</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_string_convertor.cc">
+            <BuildOrder>33</BuildOrder>
+        </CppCompile>
         <None Include="kgl_string_convertor.h">
-            <BuildOrder>14</BuildOrder>
+            <BuildOrder>29</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_texture.cc">
+            <BuildOrder>30</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_texture.h">
+            <BuildOrder>30</BuildOrder>
         </None>
         <CppCompile Include="kgl_vertex_attribute.cc">
-            <BuildOrder>15</BuildOrder>
+            <BuildOrder>31</BuildOrder>
         </CppCompile>
         <None Include="kgl_vertex_attribute.h">
-            <BuildOrder>16</BuildOrder>
+            <BuildOrder>30</BuildOrder>
         </None>
         <CppCompile Include="kgl_vertex_buffer_object.cc">
-            <BuildOrder>17</BuildOrder>
+            <BuildOrder>32</BuildOrder>
         </CppCompile>
         <None Include="kgl_vertex_buffer_object.h">
-            <BuildOrder>18</BuildOrder>
+            <BuildOrder>30</BuildOrder>
         </None>
         <CppCompile Include="kgl_vertex_type.cc">
-            <BuildOrder>19</BuildOrder>
+            <BuildOrder>33</BuildOrder>
         </CppCompile>
         <None Include="kgl_vertex_type.h">
-            <BuildOrder>20</BuildOrder>
+            <BuildOrder>30</BuildOrder>
         </None>
         <None Include="khrplatform.h">
-            <BuildOrder>7</BuildOrder>
+            <BuildOrder>24</BuildOrder>
         </None>
         <CppCompile Include="main_form.cpp">
             <Form>MainForm</Form>
             <FormType>dfm</FormType>
             <DependentOn>main_form.h</DependentOn>
-            <BuildOrder>2</BuildOrder>
+            <BuildOrder>34</BuildOrder>
         </CppCompile>
         <CppCompile Include="ShaderJoy.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <PCHCompile Include="ShaderJoyPCH1.h">
-            <BuildOrder>1</BuildOrder>
-            <PCH>true</PCH>
-        </PCHCompile>
+        <None Include="ShaderJoyPCH1.h">
+            <BuildOrder>26</BuildOrder>
+        </None>
         <FormResources Include="main_form.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
@@ -287,6 +337,18 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="..\libraries\freeimage\FreeImage_bcb.lib" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\libraries\iconv\prebuilt\iconv_bcb.lib" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName=".\Win32\Debug\ShaderJoy.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>ShaderJoy.exe</RemoteName>
@@ -311,6 +373,30 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="kgl_gpu_program.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_image_file_reader.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_light.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_material.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="kgl_message_box.cc" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
@@ -318,6 +404,24 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="kgl_primitive.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_source_texture.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_string_convertor.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_texture.cc" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>

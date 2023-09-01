@@ -43,7 +43,7 @@ void __fastcall TMainForm::_ImageMouseMove(
 
 void __fastcall TMainForm::FormActivate(TObject* Sender)
 {
-    cimg_library::CImg<unsigned char> image("lena.jpg");
+    //cimg_library::CImg<unsigned char> image("lena.jpg");
     GrabScreenImage();
 }
 

@@ -39,35 +39,36 @@ namespace kgl
 {
     class VertexBufferObject
     {
-	public:
-		/*********************************************************
+      public:
+        /*********************************************************
 		创建一个VBO的对象
 		@param  uint32_t size
 		*********************************************************/
-		void Create(uint32_t size = 0);
+        void Create(uint32_t size = 0);
 
-		/*********************************************************
+        /*********************************************************
 		删除掉VBO相关的缓冲区
 		*********************************************************/
-		void Delete();
+        void Delete();
 
-		/*********************************************************
+        /*********************************************************
 		把数据缓冲区区域映射向一片内存
 		@param          GLint usage 映射的方式，类似于GL_READ_ONLY，GL_WRITE_ONLY
 		@return         返回指向该片数据在内存的首指针
 		*********************************************************/
-		void* MapBufferToMemory(GLint usage);
+        void* MapBufferToMemory(GLint usage);
 
-		/*********************************************************
+        /*********************************************************
 		把部分数据缓冲区区域映射向一片内存
 		@param          GLint usage  映射的方式，类似于GL_READ_ONLY，GL_WRITE_ONLY
 		@param          uint32_t offset 部分区域的首地址与整个区域首地址的偏移值
 		@param          uint32_t length 部分区域的长度
 		@return         返回指向该片数据在内存的首指针
 		*********************************************************/
-		void* MapSubBufferToMemory(GLint usage, uint32_t offset, uint32_t length);
+        void* MapSubBufferToMemory(
+            GLint usage, uint32_t offset, uint32_t length);
 
-		/*********************************************************
+        /*********************************************************
 		解除对缓冲区的映射
 
 		@see function MapBufferToMemory
@@ -76,70 +77,67 @@ namespace kgl
 			  定之后的VBO缓存内容是坏的。腐坏现象源自显示器分辨率的改变或
 			  窗口系统的特定事件。此种情况，数据必须重发。
 		*********************************************************/
-		void UnmapBuffer();
+        void UnmapBuffer();
 
-		/*********************************************************
+        /*********************************************************
 		绑定VBO
 		@param  GLint buffer_type
 		*********************************************************/
-		void Bind(GLint buffer_type = GL_ARRAY_BUFFER);
+        void Bind(GLint buffer_type = GL_ARRAY_BUFFER);
 
-		/*********************************************************
+        /*********************************************************
 		把顶点数据upload到GPU
 		@param  int usage_hint GL_STATIC_DRAW, GL_DYNAMIC_DRAW等一系列的值
 		*********************************************************/
-		void UploadDataToGPU(GLint usage_hint);
+        void UploadDataToGPU(GLint usage_hint);
 
-		/*********************************************************
+        /*********************************************************
 		加入任意长度到当前VBO的缓冲区
 		@param  void * data_pointer 待添加的数据的首指针
 		@param  std::size_t data_size 待添加数据的字节数
 		*********************************************************/
-		void AddData(void* data_pointer, std::size_t data_size);
+        void AddData(void* data_pointer, std::size_t data_size);
 
-		/*********************************************************
+        /*********************************************************
 		获取到当前数据缓冲区首指针
 		@return 当前数据缓冲区首指针
 		*********************************************************/
-		void* GetDataPointer();
+        void* GetDataPointer();
 
-		/*********************************************************
+        /*********************************************************
 		获取到当前VBO的id值
 		@return  当前VBO的id值
 		*********************************************************/
-		GLuint GetBufferID();
+        GLuint GetBufferID();
 
-		/*********************************************************
+        /*********************************************************
 		获取到当前已经添加到缓冲区中的数据长度
 		@return 当前已经添加到缓冲区中的数据长度
 		*********************************************************/
-		std::size_t GetCurrentSize();
+        std::size_t GetCurrentSize();
 
-		/*********************************************************
-
-		@return
-		*********************************************************/
-		VertexBufferObject();
-
-		/*********************************************************
+        /*********************************************************
 
 		@return
 		*********************************************************/
-		~VertexBufferObject();
+        VertexBufferObject();
 
-	private:
-		std::vector<uint8_t>	data_;
-		std::size_t				size_;
-		std::size_t				current_size_;
-		int						buffer_type_;
-		bool					data_uploaded_;
-		GLuint					buffer_id_;
-	};
+        /*********************************************************
 
-	typedef boost::shared_ptr<VertexBufferObject> VBOSPtr;
+		@return
+		*********************************************************/
+        ~VertexBufferObject();
+      private:
+        std::vector<uint8_t> data_;
+        std::size_t size_;
+        std::size_t current_size_;
+        int buffer_type_;
+        bool data_uploaded_;
+        GLuint buffer_id_;
+    };
+
+    typedef boost::shared_ptr<VertexBufferObject> VBOSPtr;
 } // namespace kgl
 
 #endif // kgl_vertex_buffer_object_h__
-
-
 

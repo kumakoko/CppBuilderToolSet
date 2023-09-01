@@ -46,7 +46,8 @@ namespace kgl
         /// <param name="size">The size.</param>
         /// <param name="stride">The stride.</param>
         /// <param name="pointer">The pointer.</param>
-        VertexAttribute(GLuint index, GLboolean normalized, GLenum type, GLint size, GLsizei stride, const GLvoid* pointer);
+        VertexAttribute(GLuint index, GLboolean normalized, GLenum type,
+            GLint size, GLsizei stride, const GLvoid* pointer);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VertexAttribute"/> struct.
@@ -94,3 +95,4 @@ namespace kgl
     };
 } // namespace kgl
 #endif // kgl_vertex_attribute_h__
+

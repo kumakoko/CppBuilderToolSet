@@ -37,17 +37,23 @@ namespace kgl
 {
     enum CameraType
     {
-        ORTHO, PERSPECTIVE
+        ORTHO,
+        PERSPECTIVE
     };
 
     enum CameraDirection
     {
-        UP, DOWN, LEFT, RIGHT, FORWARD, BACK
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT,
+        FORWARD,
+        BACK
     };
 
     class Camera
     {
-    public:
+      public:
         /// <summary>
         /// Initializes a new instance of the <see cref="Camera"/> class.
         /// </summary>
@@ -96,7 +102,7 @@ namespace kgl
         /// Sets the position.
         /// </summary>
         /// <param name="pos">The position.</param>
-        void SetPosition(const glm::vec3& pos);
+        void SetPosition(const glm::vec3 &pos);
 
         /// <summary>
         /// Sets the fov.
@@ -170,7 +176,10 @@ namespace kgl
         /// <param name="fov">The fov.</param>
         /// <param name="near_clip_distance">The near_clip_distance.</param>
         /// <param name="far_clip_distance">The far_clip_distance.</param>
-        void InitViewProjection(CameraType camera_mode, const glm::vec3& camera_pos, float pitch_angle = 0.0f, float yaw_angle = 180.0f, float fov = 120.f, float near_clip_distance = 0.1f, float far_clip_distance = 200.0f);
+        void InitViewProjection(CameraType camera_mode,
+            const glm::vec3 &camera_pos, float pitch_angle = 0.0f,
+            float yaw_angle = 180.0f, float fov = 120.f,
+            float near_clip_distance = 0.1f, float far_clip_distance = 200.0f);
 
         /// <summary>
         /// Gets the mode.
@@ -194,7 +203,7 @@ namespace kgl
         /// Gets the projection matrix.
         /// </summary>
         /// <returns>const glm.mat4 &.</returns>
-        inline const glm::mat4& GetProjectionMatrix() const
+        inline const glm::mat4 &GetProjectionMatrix() const
         {
             return projection_matrix_;
         }
@@ -203,7 +212,7 @@ namespace kgl
         /// Gets the view matrix.
         /// </summary>
         /// <returns>glm.mat4.</returns>
-        inline const glm::mat4& GetViewMatrix() const
+        inline const glm::mat4 &GetViewMatrix() const
         {
             return view_matrix_;
         }
@@ -212,7 +221,7 @@ namespace kgl
         /// Gets the position.
         /// </summary>
         /// <returns>const glm.vec3 &.</returns>
-        inline const glm::vec3& GetPosition() const
+        inline const glm::vec3 &GetPosition() const
         {
             return position_;
         }
@@ -252,24 +261,23 @@ namespace kgl
             max_pitch_degree_per_frame_ = max_degree;
         }
 
-		//************************************
-		// Method:    GetForwardDirection
-		// FullName:  kgl::Camera::GetForwardDirection
-		// Access:    public
-		// Returns:   const glm::vec3&
-		// Qualifier: const 获取到本摄像机的朝前向量
-		//************************************
-		inline const glm::vec3& GetForwardDirection() const
-		{
-			return forward_;
-		}
+        //************************************
+        // Method:    GetForwardDirection
+        // FullName:  kgl::Camera::GetForwardDirection
+        // Access:    public
+        // Returns:   const glm::vec3&
+        // Qualifier: const 获取到本摄像机的朝前向量
+        //************************************
+        inline const glm::vec3 &GetForwardDirection() const
+        {
+            return forward_;
+        }
 
-		inline const glm::vec3& GetUpDirection() const
-		{
-			return up_;
-		}
-
-    private:
+        inline const glm::vec3 &GetUpDirection() const
+        {
+            return up_;
+        }
+      private:
         //************************************
         // Method:    UpdateCameraVectorsByEularAngle
         // FullName:  kgl::Camera::UpdateCameraVectorsByEularAngle
@@ -278,8 +286,7 @@ namespace kgl
         // Qualifier: 根据给定的欧拉角计算摄像机的forward，up，right向量，此三个向量就是观察坐标系的三个轴
         //************************************
         void UpdateCameraVectorsByEularAngle();
-
-    private:
+      private:
         /// <summary>
         /// The camera_mode_
         /// </summary>

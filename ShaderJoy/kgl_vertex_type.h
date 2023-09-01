@@ -73,7 +73,8 @@ namespace kgl
         glm::vec3 binormal;
     };
 
-    struct VertexPNTBT1 : public VertexPNTB // position normal tangent binormal texture_uv1
+    struct VertexPNTBT1 :
+        public VertexPNTB // position normal tangent binormal texture_uv1
     {
         glm::vec2 texture_coord_1;
     };

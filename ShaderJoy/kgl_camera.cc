@@ -258,11 +258,11 @@ namespace kgl
         forward_.z = sinf(glm::radians(yaw_angle_)) * cosf(glm::radians(pitch_angle_));
         */
 
-        forward_.z =
-            std::cosf(glm::radians(yaw_angle_)) * std::cosf(glm::radians(pitch_angle_));
+        forward_.z = std::cosf(glm::radians(yaw_angle_)) *
+                     std::cosf(glm::radians(pitch_angle_));
         forward_.y = std::sinf(glm::radians(pitch_angle_));
-        forward_.x =
-            std::sinf(glm::radians(yaw_angle_)) * std::cosf(glm::radians(pitch_angle_));
+        forward_.x = std::sinf(glm::radians(yaw_angle_)) *
+                     std::cosf(glm::radians(pitch_angle_));
 
         forward_ = glm::normalize(forward_);
 
