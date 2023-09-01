@@ -6,7 +6,7 @@
 #include "main_form.h"
 #include "glad.h"
 #include "glad_wgl.h"
-#include "glm.hpp"
+#include "glm/glm.hpp"
 #include <windows.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

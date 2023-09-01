@@ -137,6 +137,54 @@
         <None Include="glad_wgl.h">
             <BuildOrder>6</BuildOrder>
         </None>
+        <CppCompile Include="kgl_camera.cc">
+            <BuildOrder>8</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_camera.h">
+            <BuildOrder>9</BuildOrder>
+        </None>
+        <None Include="kgl_defines.h">
+            <BuildOrder>23</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_error.cc">
+            <BuildOrder>10</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_error.h">
+            <BuildOrder>11</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_message_box.cc">
+            <BuildOrder>21</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_message_box.h">
+            <BuildOrder>22</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_primitive.cc">
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_primitive.h">
+            <BuildOrder>13</BuildOrder>
+        </None>
+        <None Include="kgl_string_convertor.h">
+            <BuildOrder>14</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_vertex_attribute.cc">
+            <BuildOrder>15</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_vertex_attribute.h">
+            <BuildOrder>16</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_vertex_buffer_object.cc">
+            <BuildOrder>17</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_vertex_buffer_object.h">
+            <BuildOrder>18</BuildOrder>
+        </None>
+        <CppCompile Include="kgl_vertex_type.cc">
+            <BuildOrder>19</BuildOrder>
+        </CppCompile>
+        <None Include="kgl_vertex_type.h">
+            <BuildOrder>20</BuildOrder>
+        </None>
         <None Include="khrplatform.h">
             <BuildOrder>7</BuildOrder>
         </None>
@@ -181,7 +229,7 @@
                     <Source Name="MainSource">ShaderJoy.cpp</Source>
                 </Source>
                 <Folders>
-                    <Folder Path="D:\MyProjects\CppBuilderToolSet\ShaderJoy\glm" Masks="*.*" ShowSubdirectories="true"/>
+                    <Folder Path=".\glm" Masks="*.*" ShowSubdirectories="true"/>
                 </Folders>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k280.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
@@ -245,9 +293,51 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\ShaderJoy.tds" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName=".\Win32\Release\ShaderJoy.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>ShaderJoy.tds</RemoteName>
+                        <RemoteName>ShaderJoy.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_camera.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_error.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_message_box.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_primitive.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_vertex_attribute.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_vertex_buffer_object.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="kgl_vertex_type.cc" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
