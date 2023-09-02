@@ -10,11 +10,22 @@
 #include "kgl_primitive.h"
 #include "kgl_gpu_program.h"
 #include "glm/glm.hpp"
+#include <Vcl.ExtCtrls.hpp>
 
+#include <Vcl.Menus.hpp>
+#include <FireDAC.VCLUI.Memo.hpp>
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
   __published: // IDE-managed Components
+	TPanel *_CodeEditorPanel;
+	TMainMenu *_MainMenu;
+	TImage *_ShaderView;
+	TMenuItem *_MenuFile;
+	TMenuItem *_MenuFile_New;
+	TMenuItem *_MenuFile_Open;
+	TPanel *_ResourcesPanel;
+	TFDGUIxFormsMemo *_CodeEditorMemo;
     void __fastcall FormDestroy(TObject* Sender);
     void __fastcall FormPaint(TObject* Sender);
     void __fastcall FormResize(TObject* Sender);

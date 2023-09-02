@@ -36,8 +36,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner) : TForm(Owner)
 {
     _IsGLInitialized = false;
     hdc = NULL;
-    hrc = NULL;
-    InitializeGL();
+	hrc = NULL;
 }
 
 __fastcall bool TMainForm::InitializeGL()
@@ -45,7 +44,9 @@ __fastcall bool TMainForm::InitializeGL()
     if (_IsGLInitialized)
         return true;
 
-    hdc = GetDC(this->Handle); // get device context
+	//hdc = GetDC(this->Handle); // get device context
+	hdc - _ShaderView->Canvas->Handle;
+	
     PIXELFORMATDESCRIPTOR pfd;
     ZeroMemory(&pfd, sizeof(pfd)); // set the pixel format for the DC
     pfd.nSize = sizeof(pfd);
@@ -82,8 +83,10 @@ __fastcall bool TMainForm::InitializeGL()
 
 __fastcall void TMainForm::OnResizeGL()
 {
-    xs = ClientWidth;
-    ys = ClientHeight;
+	//xs = ClientWidth;
+	//ys = ClientHeight;
+	xs = _ShaderView->ClientWidth;
+    ys = _ShaderView->ClientHeight;
 
     screen_resolution_.x = static_cast<float>(xs);
     screen_resolution_.y = static_cast<float>(ys);
@@ -248,7 +251,11 @@ void __fastcall TMainForm::OnIdle(TObject* sender, bool &done)
 
 void __fastcall TMainForm::FormCreate(TObject* Sender)
 {
-    Application->OnIdle = this->OnIdle;
+	Application->OnIdle = this->OnIdle;
+
+        InitializeGL();
 }
 //---------------------------------------------------------------------------
+
+
 
