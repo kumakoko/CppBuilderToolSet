@@ -12,20 +12,11 @@ object MainForm: TMainForm
   Font.Name = 'Segoe UI'
   Font.Style = []
   Menu = _MainMenu
-  WindowState = wsMaximized
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnPaint = FormPaint
   OnResize = FormResize
   TextHeight = 15
-  object _ShaderView: TImage
-    Left = 461
-    Top = 0
-    Width = 808
-    Height = 656
-    Align = alRight
-    ExplicitTop = -6
-  end
   object _CodeEditorPanel: TPanel
     Left = 0
     Top = 0
@@ -33,14 +24,13 @@ object MainForm: TMainForm
     Height = 656
     Align = alLeft
     TabOrder = 0
-    ExplicitTop = -6
+    ExplicitHeight = 655
     object _CodeEditorMemo: TFDGUIxFormsMemo
       Left = 1
       Top = 1
       Width = 453
       Height = 654
       Align = alClient
-      Color = clGray
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -52,6 +42,7 @@ object MainForm: TMainForm
       ScrollBars = ssBoth
       TabOrder = 0
       WordWrap = False
+      ExplicitHeight = 653
     end
   end
   object _ResourcesPanel: TPanel
@@ -61,6 +52,19 @@ object MainForm: TMainForm
     Height = 115
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 655
+    ExplicitWidth = 1265
+  end
+  object _ShaderView: TPanel
+    Left = 455
+    Top = 0
+    Width = 814
+    Height = 656
+    Align = alClient
+    TabOrder = 2
+    OnMouseUp = _ShaderViewMouseUp
+    ExplicitLeft = 461
+    ExplicitWidth = 808
   end
   object _MainMenu: TMainMenu
     Left = 272

@@ -36,7 +36,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner) : TForm(Owner)
 {
     _IsGLInitialized = false;
     hdc = NULL;
-	hrc = NULL;
+    hrc = NULL;
 }
 
 __fastcall bool TMainForm::InitializeGL()
@@ -44,9 +44,9 @@ __fastcall bool TMainForm::InitializeGL()
     if (_IsGLInitialized)
         return true;
 
-	//hdc = GetDC(this->Handle); // get device context
-	hdc - _ShaderView->Canvas->Handle;
-	
+    //hdc = GetDC(this->Handle); // get device context
+    hdc = GetDC(_ShaderView->Handle);
+
     PIXELFORMATDESCRIPTOR pfd;
     ZeroMemory(&pfd, sizeof(pfd)); // set the pixel format for the DC
     pfd.nSize = sizeof(pfd);
@@ -83,9 +83,9 @@ __fastcall bool TMainForm::InitializeGL()
 
 __fastcall void TMainForm::OnResizeGL()
 {
-	//xs = ClientWidth;
-	//ys = ClientHeight;
-	xs = _ShaderView->ClientWidth;
+    //xs = ClientWidth;
+    //ys = ClientHeight;
+    xs = _ShaderView->ClientWidth;
     ys = _ShaderView->ClientHeight;
 
     screen_resolution_.x = static_cast<float>(xs);
@@ -229,7 +229,7 @@ void __fastcall TMainForm::InitScreenRectangleElement()
 
     heart_beat_shader_ = new kgl::GPUProgram;
     heart_beat_shader_->CreateFromFile(
-        "pixel_magic_vs.glsl", "heart_beat_fs.glsl", nullptr);
+        "pixel_magic_vs.glsl", "sea_fs.glsl", nullptr);
 }
 
 void __fastcall TMainForm::RenderBeatHeart()
@@ -239,7 +239,9 @@ void __fastcall TMainForm::RenderBeatHeart()
     heart_beat_shader_->ApplyFloat(static_cast<float>(curTime), "global_time");
     heart_beat_shader_->ApplyVector2(
         glm::value_ptr(screen_resolution_), "screen_resolution");
-    rectangle_primitive_->DrawIndexed();
+    heart_beat_shader_->ApplyVector2(
+		glm::value_ptr(mouse_input_pos_), "mouse_position");
+	rectangle_primitive_->DrawIndexed();
 }
 
 void __fastcall TMainForm::OnIdle(TObject* sender, bool &done)
@@ -251,11 +253,17 @@ void __fastcall TMainForm::OnIdle(TObject* sender, bool &done)
 
 void __fastcall TMainForm::FormCreate(TObject* Sender)
 {
-	Application->OnIdle = this->OnIdle;
+    Application->OnIdle = this->OnIdle;
 
-        InitializeGL();
+    InitializeGL();
 }
 //---------------------------------------------------------------------------
 
-
+void __fastcall TMainForm::_ShaderViewMouseUp(
+    TObject* Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
+{
+    mouse_input_pos_.x = static_cast<float>(X);
+    mouse_input_pos_.y = static_cast<float>(Y);
+}
+//---------------------------------------------------------------------------
 

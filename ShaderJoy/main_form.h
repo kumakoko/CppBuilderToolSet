@@ -18,18 +18,20 @@
 class TMainForm : public TForm
 {
   __published: // IDE-managed Components
-	TPanel *_CodeEditorPanel;
-	TMainMenu *_MainMenu;
-	TImage *_ShaderView;
-	TMenuItem *_MenuFile;
-	TMenuItem *_MenuFile_New;
-	TMenuItem *_MenuFile_Open;
-	TPanel *_ResourcesPanel;
-	TFDGUIxFormsMemo *_CodeEditorMemo;
+    TPanel* _CodeEditorPanel;
+    TMainMenu* _MainMenu;
+    TMenuItem* _MenuFile;
+    TMenuItem* _MenuFile_New;
+    TMenuItem* _MenuFile_Open;
+    TPanel* _ResourcesPanel;
+    TFDGUIxFormsMemo* _CodeEditorMemo;
+    TPanel* _ShaderView;
     void __fastcall FormDestroy(TObject* Sender);
     void __fastcall FormPaint(TObject* Sender);
     void __fastcall FormResize(TObject* Sender);
-	void __fastcall FormCreate(TObject *Sender);
+    void __fastcall FormCreate(TObject* Sender);
+	void __fastcall _ShaderViewMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
   private: // User declarations
     bool __fastcall InitializeGL();
     void __fastcall OnResizeGL();
@@ -37,16 +39,16 @@ class TMainForm : public TForm
     void __fastcall ShutdownGL();
     void __fastcall InitScreenRectangleElement();
     void __fastcall RenderBeatHeart();
-    void __fastcall OnIdle(TObject* sender,bool& done);
+    void __fastcall OnIdle(TObject* sender, bool &done);
   private:
     bool _IsGLInitialized = false;
     int xs, ys;
     HDC hdc; // device context
     HGLRC hrc; // rendering context
     kgl::Primitive* rectangle_primitive_ = nullptr;
-    kgl::GPUProgram* heart_beat_shader_ = nullptr;
-        glm::vec2               screen_resolution_;
-    glm::vec2               mouse_input_pos_;
+	kgl::GPUProgram* heart_beat_shader_ = nullptr;
+	glm::vec2 screen_resolution_;
+    glm::vec2 mouse_input_pos_;
   public: // User declarations
     __fastcall TMainForm(TComponent* Owner);
 };
@@ -54,7 +56,4 @@ class TMainForm : public TForm
 extern PACKAGE TMainForm* MainForm;
 //---------------------------------------------------------------------------
 #endif
-
-
-
 
