@@ -240,8 +240,8 @@ void __fastcall TMainForm::RenderBeatHeart()
     heart_beat_shader_->ApplyVector2(
         glm::value_ptr(screen_resolution_), "screen_resolution");
     heart_beat_shader_->ApplyVector2(
-		glm::value_ptr(mouse_input_pos_), "mouse_position");
-	rectangle_primitive_->DrawIndexed();
+        glm::value_ptr(mouse_input_pos_), "mouse_position");
+    rectangle_primitive_->DrawIndexed();
 }
 
 void __fastcall TMainForm::OnIdle(TObject* sender, bool &done)
