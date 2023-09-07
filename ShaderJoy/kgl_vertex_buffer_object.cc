@@ -146,7 +146,9 @@ namespace kgl
 
     void* VertexBufferObject::GetDataPointer()
     {
-        return data_uploaded_ ? nullptr : (void*)data_[0];
+        return data_uploaded_
+                   ? nullptr
+                   : reinterpret_cast<void*>(&(data_[0])); //(void*)data_[0];
     }
 
     GLuint VertexBufferObject::GetBufferID()
@@ -159,3 +161,4 @@ namespace kgl
         return current_size_;
     }
 } // namespace kgl
+
