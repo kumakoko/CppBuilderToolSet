@@ -3,14 +3,16 @@
 #include <vcl.h>
 #pragma hdrstop
 
+#include <windows.h>
+#include <ctime>
+
 #include "main_form.h"
 #include "glad.h"
 #include "glad_wgl.h"
-#include "glm/glm.hpp"
+
 #include "kgl_defines.h"
+
 #include "boost/format.hpp"
-#include <windows.h>
-#include <ctime>
 
 #ifndef GLM_FORCE_SSE2
     #define GLM_FORCE_SSE2
@@ -149,7 +151,7 @@ void __fastcall TMainForm::FormResize(TObject* Sender)
 void __fastcall TMainForm::InitScreenRectangleElement()
 {
     GLfloat vertices[] = {
-        // 位置          // 颜色            //纹理坐标1 //纹理坐标2 //纹理坐标3 //纹理坐标4
+        // 位置          // 颜色//纹理坐标1 //纹理坐标2 //纹理坐标3 //纹理坐标4
         1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
         1.0f, 1.0f, // 右上角
         1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,

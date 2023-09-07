@@ -3,8 +3,8 @@ object MainForm: TMainForm
   Top = 0
   BorderStyle = bsSingle
   Caption = 'Shader Joy'
-  ClientHeight = 770
-  ClientWidth = 1265
+  ClientHeight = 771
+  ClientWidth = 1269
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,9 +21,10 @@ object MainForm: TMainForm
     Left = 0
     Top = 0
     Width = 455
-    Height = 655
+    Height = 656
     Align = alLeft
     TabOrder = 0
+    ExplicitHeight = 655
     object _CodeEditorMemo: TFDGUIxFormsMemo
       Left = 1
       Top = 1
@@ -41,27 +42,29 @@ object MainForm: TMainForm
       ScrollBars = ssBoth
       TabOrder = 0
       WordWrap = False
+      ExplicitHeight = 653
     end
   end
   object _ResourcesPanel: TPanel
     Left = 0
-    Top = 655
-    Width = 1265
+    Top = 656
+    Width = 1269
     Height = 115
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 655
+    ExplicitWidth = 1265
   end
   object _ShaderView: TPanel
     Left = 455
     Top = 0
-    Width = 810
-    Height = 655
+    Width = 814
+    Height = 656
     Align = alClient
     TabOrder = 2
     OnMouseUp = _ShaderViewMouseUp
-    ExplicitLeft = 461
-    ExplicitWidth = 808
-    ExplicitHeight = 656
+    ExplicitWidth = 810
+    ExplicitHeight = 655
   end
   object _MainMenu: TMainMenu
     Left = 272

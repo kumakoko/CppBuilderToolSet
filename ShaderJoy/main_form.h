@@ -7,13 +7,12 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include <Vcl.Menus.hpp>
+#include <FireDAC.VCLUI.Memo.hpp>
 #include "kgl_primitive.h"
 #include "kgl_gpu_program.h"
 #include "glm/glm.hpp"
-#include <Vcl.ExtCtrls.hpp>
-
-#include <Vcl.Menus.hpp>
-#include <FireDAC.VCLUI.Memo.hpp>
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
@@ -30,8 +29,8 @@ class TMainForm : public TForm
     void __fastcall FormPaint(TObject* Sender);
     void __fastcall FormResize(TObject* Sender);
     void __fastcall FormCreate(TObject* Sender);
-	void __fastcall _ShaderViewMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y);
+    void __fastcall _ShaderViewMouseUp(
+        TObject* Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
   private: // User declarations
     bool __fastcall InitializeGL();
     void __fastcall OnResizeGL();
@@ -46,8 +45,8 @@ class TMainForm : public TForm
     HDC hdc; // device context
     HGLRC hrc; // rendering context
     kgl::Primitive* rectangle_primitive_ = nullptr;
-	kgl::GPUProgram* heart_beat_shader_ = nullptr;
-	glm::vec2 screen_resolution_;
+    kgl::GPUProgram* heart_beat_shader_ = nullptr;
+    glm::vec2 screen_resolution_;
     glm::vec2 mouse_input_pos_;
   public: // User declarations
     __fastcall TMainForm(TComponent* Owner);
@@ -56,4 +55,5 @@ class TMainForm : public TForm
 extern PACKAGE TMainForm* MainForm;
 //---------------------------------------------------------------------------
 #endif
+
 
