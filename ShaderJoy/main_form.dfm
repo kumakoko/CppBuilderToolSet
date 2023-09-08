@@ -25,25 +25,6 @@ object MainForm: TMainForm
     Align = alLeft
     TabOrder = 0
     ExplicitHeight = 655
-    object _CodeEditorMemo: TFDGUIxFormsMemo
-      Left = 1
-      Top = 1
-      Width = 453
-      Height = 654
-      Align = alClient
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Courier New'
-      Font.Style = []
-      Lines.Strings = (
-        '_CodeEditorMemo')
-      ParentFont = False
-      ScrollBars = ssBoth
-      TabOrder = 0
-      WordWrap = False
-      ExplicitHeight = 653
-    end
   end
   object _ResourcesPanel: TPanel
     Left = 0

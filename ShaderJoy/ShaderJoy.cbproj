@@ -6,7 +6,7 @@
         <AppType>Application</AppType>
         <MainSource>ShaderJoy.cpp</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <CC_Suffix Condition="'$(CC_Suffix)'==''">c</CC_Suffix>
         <TargetedPlatforms>1</TargetedPlatforms>
@@ -82,7 +82,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_PCHName_Clang>ShaderJoyPCH1.h</BCC_PCHName_Clang>
-        <ILINK_LibraryPath>D:\MyProjects\CppBuilderToolSet\libraries\freeimage\;D:\MyProjects\CppBuilderToolSet\libraries\iconv\prebuilt\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>D:\MyProjects\CppBuilderToolSet\libraries\scintilla371-cbuilder\bin\Win32\Release\;D:\MyProjects\CppBuilderToolSet\libraries\scintilla371-cbuilder\bin\Win32\Debug\;D:\MyProjects\CppBuilderToolSet\libraries\freeimage\;D:\MyProjects\CppBuilderToolSet\libraries\iconv\prebuilt\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindcompvclsmp;bindcompvclwinx;bindengine;CloudService;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;FireDAC;FireDACADSDriver;FireDACCommon;FireDACCommonDriver;FireDACCommonODBC;FireDACIBDriver;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;FireDACSqliteDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;tethering;vcl;vclactnband;vcldb;vcldsnap;vcledge;vclFireDAC;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;VirtualTreesCR;xmlrtl;$(PackageImports)</PackageImports>
@@ -116,6 +116,8 @@
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
         <ILINK_LibraryPath>$(BDSLIB)\$(PLATFORM)$(CC_SUFFIX)\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <LinkPackageImports>rtl.bpi;vcl.bpi;vclFireDAC.bpi;FireDAC.bpi;FireDACCommonDriver.bpi;FireDACCommon.bpi;xmlrtl.bpi;dbrtl.bpi;vcldb.bpi;vclwinx.bpi;vclimg.bpi;bindengine.bpi;vclx.bpi</LinkPackageImports>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -130,11 +132,27 @@
     </PropertyGroup>
     <ItemGroup>
         <LibFiles Include="..\libraries\freeimage\FreeImage_bcb.lib" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>36</BuildOrder>
+            <BuildOrder>39</BuildOrder>
             <IgnorePath>true</IgnorePath>
         </LibFiles>
         <LibFiles Include="..\libraries\iconv\prebuilt\iconv_bcb.lib" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>35</BuildOrder>
+            <BuildOrder>40</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="..\libraries\scintilla371-cbuilder\bin\Win32\Debug\SciLexer.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>41</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="..\libraries\scintilla371-cbuilder\bin\Win32\Debug\Sintilla.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>42</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="..\libraries\scintilla371-cbuilder\bin\Win32\Release\SciLexer.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>43</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="..\libraries\scintilla371-cbuilder\bin\Win32\Release\Sintilla.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>44</BuildOrder>
             <IgnorePath>true</IgnorePath>
         </LibFiles>
         <CppCompile Include="glad.c">
@@ -367,15 +385,45 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\ShaderJoy.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\libraries\scintilla371-cbuilder\bin\Win32\Debug\SciLexer.lib" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
-                        <RemoteName>ShaderJoy.exe</RemoteName>
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\ShaderJoy.tds" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName="..\libraries\scintilla371-cbuilder\bin\Win32\Debug\SciLexer.lib" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win32">
-                        <RemoteName>ShaderJoy.tds</RemoteName>
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\libraries\scintilla371-cbuilder\bin\Win32\Debug\Sintilla.lib" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\libraries\scintilla371-cbuilder\bin\Win32\Debug\Sintilla.lib" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\libraries\scintilla371-cbuilder\bin\Win32\Release\SciLexer.lib" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\libraries\scintilla371-cbuilder\bin\Win32\Release\Sintilla.lib" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName=".\Win32\Debug\ShaderJoy.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>ShaderJoy.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

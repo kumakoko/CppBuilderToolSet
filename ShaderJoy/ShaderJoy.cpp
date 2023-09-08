@@ -8,12 +8,11 @@
 #include "kgl_error.h"
 
 USEFORM("main_form.cpp", MainForm);
-
-// ---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int) {
 	try {
 		Application->CreateForm(__classid(TMainForm), &MainForm);
-		Application->Run();
+                 Application->Run();
 	}
 	catch (Exception &exception) {
 		Application->ShowException(&exception);

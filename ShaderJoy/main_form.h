@@ -23,7 +23,6 @@ class TMainForm : public TForm
     TMenuItem* _MenuFile_New;
     TMenuItem* _MenuFile_Open;
     TPanel* _ResourcesPanel;
-    TFDGUIxFormsMemo* _CodeEditorMemo;
     TPanel* _ShaderView;
     void __fastcall FormDestroy(TObject* Sender);
     void __fastcall FormPaint(TObject* Sender);
